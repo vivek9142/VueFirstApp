@@ -1,19 +1,3 @@
-/*
-Now we got isFavorite managed here, and of course we can pass that down to our component,
-but there, again, it just acts as an initial prop value, which means if I click toggle 
-favorite here, that changes it inside of the FriendContact component,
-but not inside of our core friends data. Here of course, that is just some dummy data,
-but if this would be coming from a database, we probably would want to send it back
-to that database as well. So just changing it inside of that component is not enough.
-
-We would also want to change it here in app.vue file in our friends data, in our friends 
-array. So therefore, we now need communication from the FriendContact component back to 
-app.vue. So basically the opposite of props. 
-
-If a component should talk to its parent and let the parent know that something happened,
-that component should emit an event to which the parent can listen. And indeed you can emit 
-your own custom events inside of your Vue components.
-*/
 
 <template>
     <div>
@@ -56,11 +40,8 @@ export default {
     },
     methods:{
       toggleFavouriteStatus(friendId){
-        console.log(friendId);
         const foundFriend = this.friends.find(friend => friend.id === friendId);
-        console.log(foundFriend)
         foundFriend.isFavourite = !foundFriend.isFavourite;
-        console.log(this.friends,foundFriend)
       }
     }
 }
