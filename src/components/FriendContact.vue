@@ -1,6 +1,6 @@
 <template>
     <li>
-        <h2>{{name}} {{friendIsFavourite === "1" ? "(Favourite)" : ""}}</h2>
+        <h2>{{name}} {{friendIsFavourite ? "(Favourite)" : ""}}</h2>
         <button @click="toggleFav">Toggle Favorite</button>
         <button @click="toggleDetails">{{detailsAreVisible ? "Hide" : "Show"}}</button>
         <ul v-if="detailsAreVisible">
@@ -48,7 +48,7 @@ export default {
         // 25:9  error  Unexpected mutation of "isFavourite" prop  vue/no-mutating-props
     // }
     toggleFav(){
-        this.friendIsFavourite = this.friendIsFavourite === '0' ? '1' : '0';
+        this.friendIsFavourite = !this.friendIsFavourite;
     }
     }
 }
