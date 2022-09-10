@@ -7,6 +7,10 @@
             <li><strong>Phone:</strong> {{phoneNumber}}</li>
             <li><strong>Email:</strong> {{emailAddress}}</li>
           </ul>
+          <!--  of course, you can also not use a separate method like this,
+            though you absolutely can do it, nothing wrong with it. But you can also not do 
+            that and instead go to your template and just call emit in here, like this -->
+          <button @click="$emit('delete',id)">Delete</button>
     </li>
 </template>
 
@@ -23,7 +27,7 @@ export default {
             default:false,
         }
     },
-    emits:['toggle-favourite'],
+    emits:['toggle-favourite','delete'],
     // emits:{
     //     'toggle-favourite':function(id){
     //         if(id)  return true;
@@ -44,7 +48,10 @@ export default {
     },
     toggleFav(){
         this.$emit('toggle-favourite',this.id);
-    }
+    },
+    // deleteFriend(){
+    //     this.$emit('toggle')
+    // }
     }
 }
 </script>

@@ -12,7 +12,8 @@
         :phone-number= "friend.phone"
         :email-address= "friend.email"
         :is-favourite="friend.isFavourite"
-        @toggle-favourite="toggleFavouriteStatus"></friend-contact>
+        @toggle-favourite="toggleFavouriteStatus"
+        @delete="deleteContact"></friend-contact>
     </ul>
     </div>
 </template>
@@ -55,6 +56,9 @@ export default {
 
         this.friends.push(newFriendcontact);
 
+      },
+      deleteContact(friendId){
+        this.friends = this.friends.filter(friend => friend.id !== friendId)
       }
     }
 }
